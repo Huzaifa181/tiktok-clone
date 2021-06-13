@@ -1,2 +1,2 @@
 # tiktop-clone
-tiktop-clone with firebase
+tikto-clone with firebase
