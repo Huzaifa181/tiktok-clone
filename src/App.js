@@ -5,7 +5,6 @@ import Videos from './Videos'
 function App() {
   return (
     <div className='app'>
-      <h1>This a app</h1>
       <div className='app__video'>
         <Videos/>
         <Videos/>
