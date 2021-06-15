@@ -6,6 +6,11 @@
     background-color: #fff;
     scroll-snap-align: start;
 }
+.video__playerLogo{
+    position: relative;
+    top: 10;
+    right: 0;
+}
 .video__player{
     object-fit: fill;
     width: 100%;
