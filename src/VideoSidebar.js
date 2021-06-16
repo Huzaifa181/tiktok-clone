@@ -6,6 +6,7 @@ import MessageIcon from '@material-ui/icons/Message';
 import ShareIcon from '@material-ui/icons/Share';
 const VideoSidebar = ({likes, shares, messages}) => {
     const [liked, setLiked] = useState(false)
+    console.log(messages)
     return (
         <div className='videoSidebar'>
             <div className="videoSidebar__button">

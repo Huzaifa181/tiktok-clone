@@ -1,27 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useState } from "react";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Videos from './Videos'
+import {db} from './firebase'
 function App() {
+  const [videos, setVideos]= useState([])
+  useEffect(() => {
+    db.collection('videos')
+    .onSnapshot((snapshot)=>{
+        setVideos(snapshot.docs.map(doc=>doc.data()))
+    })
+}, []);
+console.log(videos)
   return (
     <div className='app'>
       <div className='app__video'>
-        <Videos
-        url="https://media.istockphoto.com/videos/abstract-background-with-3d-rings-and-rotating-parts-clean-and-modern-video-id1248225100"
-          channel='Huzaifa'
-          description="Whats app"
-          Song="Hi How are you"
-          shares={200}
-          messages={130}
-          likes={190}
+        {videos.map((video)=>{
+          return(
+            <Videos
+          url={video.url}
+          channel={video.channel}
+          description={video.description}
+          song={video.song}
+          shares={video.shares}
+          messages={video.messages}
+          likes={video.likes}
         />
-        <Videos/>
-        <Videos/>
+          )
+        })}
       </div>
-        {/* <Switch>
-        <Route exact path="/" render={()=><Layout/>}/>
-        <Route exact path="/user-page" render={()=><Layout/>}/>
-        </Switch> */}
 </div>
   );
 }
